@@ -1,133 +1,177 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tables du Mariage – David & Laurene</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
-<style>
-  body {
-    margin: 0;
-    font-family: 'Playfair Display', serif;
-    background: linear-gradient(135deg, #fff8e1, #fff3cd);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tables du Mariage – David & Laurene</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #fff8e1, #fff3cd);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-  .table {
-    position: relative;
-    width: 90%;
-    max-width: 400px;
-    background: white;
-    padding: 40px 30px;
-    text-align: center;
-    border: 2px solid #d4af37;
-    border-radius: 20px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-    margin-bottom: 30px;
-    overflow: hidden;
-    display: none;
-  }
+        .table {
+            position: relative;
+            width: 90%;
+            max-width: 400px;
+            background: white;
+            padding: 60px 30px;
+            text-align: center;
+            border: 2px solid #d4af37;
+            border-radius: 20px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: none; /* caché par défaut */
+        }
 
-  /* Animation de brillance du cadre doré */
-  .table::before {
-    content: '';
-    position: absolute;
-    top: -2px; left: -2px; right: -2px; bottom: -2px;
-    border-radius: 20px;
-    background: linear-gradient(120deg, rgba(212,175,55,0.2), rgba(212,175,55,0.8), rgba(212,175,55,0.2));
-    animation: shine 3s infinite linear;
-    pointer-events: none;
-  }
+            /* Animation de brillance du cadre doré */
+            .table::before {
+                content: '';
+                position: absolute;
+                top: -2px;
+                left: -2px;
+                right: -2px;
+                bottom: -2px;
+                border-radius: 20px;
+                background: linear-gradient(120deg, rgba(212,175,55,0.2), rgba(212,175,55,0.8), rgba(212,175,55,0.2));
+                animation: shine 3s infinite linear;
+                pointer-events: none;
+            }
 
-  @keyframes shine {
-    0% { transform: rotate(0deg) translateX(-100%) rotate(0deg); }
-    100% { transform: rotate(0deg) translateX(100%) rotate(0deg); }
-  }
+        @keyframes shine {
+            0% {
+                transform: rotate(0deg) translateX(-100%) rotate(0deg);
+            }
 
-  h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5em;
-    color: #d4af37;
-    margin: 0;
-    opacity: 0;
-    animation: fadeZoom 1s ease forwards;
-  }
+            100% {
+                transform: rotate(0deg) translateX(100%) rotate(0deg);
+            }
+        }
 
-  p {
-    font-family: 'Great Vibes', cursive;
-    font-size: 0.4em;
-    color: #8b4513;
-    margin-top: 10px;
-    opacity: 0;
-    animation: fadeIn 1s ease forwards 0.8s;
-  }
+        .table .table-text {
+            position: relative;
+            z-index: 1;
+        }
 
-  /* Animations */
-  @keyframes fadeZoom {
-    0% { opacity: 0; transform: scale(0.8); }
-    100% { opacity: 1; transform: scale(1); }
-  }
+            .table .table-text h2 {
+                font-size: 2em; /* agrandi */
+                margin: 0;
+                color: #8b4513;
+                font-family: 'Lobster', Arial, Helvetica, sans-serif; /* nouvelle police élégante */
+            }
 
-  @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
+            .table .table-text h1 {
+                font-size: 3em;
+                margin: 10px 0 0 0;
+                color: #d4af37;
+            }
 
-  /* Responsive mobile */
-  @media (max-width: 500px) {
-    h1 { font-size: 2em; }
-    p { font-size: 0.3em; }
-    .table { padding: 30px 20px; }
-  }
-</style>
+            .table .table-text p {
+                font-size: 0.3em;
+                color: #8b4513;
+                margin-top: 10px;
+            }
+
+            /* Animations */
+            .table .table-text h2, .table .table-text h1, .table .table-text p {
+                opacity: 0;
+                animation: fadeIn 1s ease forwards;
+            }
+
+            .table .table-text h1 {
+                animation-delay: 0.3s;
+            }
+
+            .table .table-text p {
+                animation-delay: 0.6s;
+            }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive mobile */
+        @media (max-width: 500px) {
+            .table {
+                padding: 40px 20px;
+            }
+
+                .table .table-text h2 {
+                    font-size: 1.2em;
+                }
+
+                .table .table-text h1 {
+                    font-size: 2em;
+                }
+
+                .table .table-text p {
+                    font-size: 0.25em;
+                }
+        }
+    </style>
 </head>
 <body>
 
-<!-- 30 tables du Nouveau Testament -->
-<div class="table" id="table-Matthieu"><h1>Table MATTHIEU</h1><p>Bienvenue</p></div>
-<div class="table" id="table-Marc"><h1>Table MARC</h1><p>Bienvenue</p></div>
-<div class="table" id="table-Luc"><h1>Table LUC</h1><p>Bienvenue</p></div>
-<div class="table" id="table-Jean"><h1>Table JEAN</h1><p>Bienvenue</p></div>
-<div class="table" id="table-Actes"><h1>Table ACTES</h1><p>Bienvenue</p></div>
-<div class="table" id="table-Romains"><h1>Table ROMAINS</h1><p>Bienvenue</p></div>
-<div class="table" id="table-1Corinthiens"><h1>Table 1 CORINTHIENS</h1><p>Bienvenue</p></div>
-<div class="table" id="table-2Corinthiens"><h1>Table 2 CORINTHIENS</h1><p>Bienvenue</p></div>
-<div class="table" id="table-Galates"><h1>Table GALATES</h1><p>Bienvenue</p></div>
-<div class="table" id="table-Ephesiens"><h1>Table EPHESIENS</h1><p>Bienvenue</p></div>
-<div class="table" id="table-Philippiens"><h1>Table PHILIPPIENS</h1><p>Bienvenue</p></div>
-<div class="table" id="table-Colossiens"><h1>Table COLOSSIENS</h1><p>Bienvenue</p></div>
-<div class="table" id="table-1Thessaloniciens"><h1>Table 1 THESSALONICIENS</h1><p>Bienvenue</p></div>
-<div class="table" id="table-2Thessaloniciens"><h1>Table 2 THESSALONICIENS</h1><p>Bienvenue</p></div>
-<div class="table" id="table-1Timothee"><h1>Table 1 TIMOTHEE</h1><p>Bienvenue</p></div>
-<div class="table" id="table-2Timothee"><h1>Table 2 TIMOTHEE</h1><p>Bienvenue</p></div>
-<div class="table" id="table-Tite"><h1>Table TITE</h1><p>Bienvenue</p></div>
-<div class="table" id="table-Philémon"><h1>Table PHILEMON</h1><p>Bienvenue</p></div>
-<div class="table" id="table-Hebreux"><h1>Table HEBREUX</h1><p>Bienvenue</p></div>
-<div class="table" id="table-Jacques"><h1>Table JACQUES</h1><p>Bienvenue</p></div>
-<div class="table" id="table-1Pierre"><h1>Table 1 PIERRE</h1><p>Bienvenue</p></div>
-<div class="table" id="table-2Pierre"><h1>Table 2 PIERRE</h1><p>Bienvenue</p></div>
-<div class="table" id="table-1Jean"><h1>Table 1 JEAN</h1><p>Bienvenue</p></div>
-<div class="table" id="table-2Jean"><h1>Table 2 JEAN</h1><p>Bienvenue</p></div>
-<div class="table" id="table-3Jean"><h1>Table 3 JEAN</h1><p>Bienvenue</p></div>
-<div class="table" id="table-Jude"><h1>Table JUDE</h1><p>Bienvenue</p></div>
-<div class="table" id="table-Apocalypse"><h1>Table APOCALYPSE</h1><p>Bienvenue</p></div>
+    <!-- 30 tables du Nouveau Testament -->
+    <div class="table" id="table-Matthieu"><div class="table-text"><h2>Table</h2><h1>MATTHIEU</h1><p>Bienvenue</p></div></div>
+    <div class="table" id="table-Marc"><div class="table-text"><h2>Table</h2><h1>MARC</h1><p>Bienvenue</p></div></div>
+    <div class="table" id="table-Luc"><div class="table-text"><h2>Table</h2><h1>LUC</h1><p>Bienvenue</p></div></div>
+    <div class="table" id="table-Jean"><div class="table-text"><h2>Table</h2><h1>JEAN</h1><p>Bienvenue</p></div></div>
+    <div class="table" id="table-Actes"><div class="table-text"><h2>Table</h2><h1>ACTES</h1><p>Bienvenue</p></div></div>
+    <div class="table" id="table-Romains"><div class="table-text"><h2>Table</h2><h1>ROMAINS</h1><p>Bienvenue</p></div></div>
+    <div class="table" id="table-1Corinthiens"><div class="table-text"><h2>Table</h2><h1>1 CORINTHIENS</h1><p>Bienvenue</p></div></div>
+    <div class="table" id="table-2Corinthiens"><div class="table-text"><h2>Table</h2><h1>2 CORINTHIENS</h1><p>Bienvenue</p></div></div>
+    <div class="table" id="table-Galates"><div class="table-text"><h2>Table</h2><h1>GALATES</h1><p>Bienvenue</p></div></div>
+    <div class="table" id="table-Ephesiens"><div class="table-text"><h2>Table</h2><h1>EPHESIENS</h1><p>Bienvenue</p></div></div>
+    <div class="table" id="table-Philippiens"><div class="table-text"><h2>Table</h2><h1>PHILIPPIENS</h1><p>Bienvenue</p></div></div>
+    <div class="table" id="table-Colossiens"><div class="table-text"><h2>Table</h2><h1>COLOSSIENS</h1><p>Bienvenue</p></div></div>
+    <div class="table" id="table-1Thessaloniciens"><div class="table-text"><h2>Table</h2><h1>1 THESSALONICIENS</h1><p>Bienvenue</p></div></div>
+    <div class="table" id="table-2Thessaloniciens"><div class="table-text"><h2>Table</h2><h1>2 THESSALONICIENS</h1><p>Bienvenue</p></div></div>
+    <div class="table" id="table-1Timothee"><div class="table-text"><h2>Table</h2><h1>1 TIMOTHEE</h1><p>Bienvenue</p></div></div>
+    <div class="table" id="table-2Timothee"><div class="table-text"><h2>Table</h2><h1>2 TIMOTHEE</h1><p>Bienvenue</p></div></div>
+    <div class="table" id="table-Tite"><div class="table-text"><h2>Table</h2><h1>TITE</h1><p>Bienvenue</p></div></div>
+    <div class="table" id="table-Philémon"><div class="table-text"><h2>Table</h2><h1>PHILEMON</h1><p>Bienvenue</p></div></div>
+    <div class="table" id="table-Hebreux"><div class="table-text"><h2>Table</h2><h1>HEBREUX</h1><p>Bienvenue</p></div></div>
+    <div class="table" id="table-Jacques"><div class="table-text"><h2>Table</h2><h1>JACQUES</h1><p>Bienvenue</p></div></div>
+    <div class="table" id="table-1Pierre"><div class="table-text"><h2>Table</h2><h1>1 PIERRE</h1><p>Bienvenue</p></div></div>
+    <div class="table" id="table-2Pierre"><div class="table-text"><h2>Table</h2><h1>2 PIERRE</h1><p>Bienvenue</p></div></div>
+    <div class="table" id="table-1Jean"><div class="table-text"><h2>Table</h2><h1>1 JEAN</h1><p>Bienvenue</p></div></div>
+    <div class="table" id="table-2Jean"><div class="table-text"><h2>Table</h2><h1>2 JEAN</h1><p>Bienvenue</p></div></div>
+    <div class="table" id="table-3Jean"><div class="table-text"><h2>Table</h2><h1>3 JEAN</h1><p>Bienvenue</p></div></div>
+    <div class="table" id="table-Jude"><div class="table-text"><h2>Table</h2><h1>JUDE</h1><p>Bienvenue</p></div></div>
+    <div class="table" id="table-Apocalypse"><div class="table-text"><h2>Table</h2><h1>APOCALYPSE</h1><p>Bienvenue</p></div></div>
 
-<script>
-  const hash = window.location.hash.substring(1);
-  if(hash){
-    const table = document.getElementById(hash);
-    if(table){
-      table.style.display = 'block';
-    } else {
-      document.body.innerHTML = "<p style='text-align:center;margin-top:50px;'>Table introuvable</p>";
-    }
-  } else {
-    document.body.innerHTML = "<p style='text-align:center;margin-top:50px;'>Lien invalide. Veuillez contacter les mariés.</p>";
-  }
-</script>
+    <script>
+        const hash = window.location.hash.substring(1);
+        if (hash) {
+            const table = document.getElementById(hash);
+            if (table) {
+                table.style.display = 'flex';
+                table.style.flexDirection = 'column';
+                table.style.alignItems = 'center';
+                table.style.justifyContent = 'center';
+            } else {
+                document.body.innerHTML = "<p style='text-align:center;margin-top:50px;'>Table introuvable</p>";
+            }
+        } else {
+            document.body.innerHTML = "<p style='text-align:center;margin-top:50px;'>Lien invalide. Veuillez contacter les mariés.</p>";
+        }
+    </script>
 
 </body>
 </html>
