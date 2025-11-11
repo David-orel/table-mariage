@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tables du Mariage – David & Laurene</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #fff8e1, #fff3cd);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .table {
+            position: relative;
+            width: 90%;
+            max-width: 400px;
+            background: white;
+            padding: 40px 30px;
+            text-align: center;
+            border: 2px solid #d4af37; /* cadre doré */
+            border-radius: 20px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            overflow: hidden;
+            display: none; /* toutes les tables cachées par défaut */
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            color: #d4af37;
+            margin: 0;
+            opacity: 0;
+            animation: fadeZoom 1s ease forwards;
+        }
+
+        p {
+            font-family: 'Great Vibes', cursive;
+            font-size: 0.5em;
+            color: #8b4513;
+            margin-top: 10px;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 0.8s;
+        }
+
+        /* Animations */
+        @keyframes fadeZoom {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive mobile */
+        @media (max-width: 500px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            p {
+                font-size: 0.4em;
+            }
+
+            .table {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 30 tables du Nouveau Testament -->
+    <div class="table" id="table-Matthieu"><h1>Table MATTHIEU</h1><p>Bienvenue</p></div>
+    <div class="table" id="table-Marc"><h1>Table MARC</h1><p>Bienvenue</p></div>
+    <div class="table" id="table-Luc"><h1>Table LUC</h1><p>Bienvenue</p></div>
+    <div class="table" id="table-Jean"><h1>Table JEAN</h1><p>Bienvenue</p></div>
+    <div class="table" id="table-Actes"><h1>Table ACTES</h1><p>Bienvenue</p></div>
+    <div class="table" id="table-Romains"><h1>Table ROMAINS</h1><p>Bienvenue</p></div>
+    <div class="table" id="table-1Corinthiens"><h1>Table 1 CORINTHIENS</h1><p>Bienvenue</p></div>
+    <div class="table" id="table-2Corinthiens"><h1>Table 2 CORINTHIENS</h1><p>Bienvenue</p></div>
+    <div class="table" id="table-Galates"><h1>Table GALATES</h1><p>Bienvenue</p></div>
+    <div class="table" id="table-Ephesiens"><h1>Table EPHESIENS</h1><p>Bienvenue</p></div>
+    <div class="table" id="table-Philippiens"><h1>Table PHILIPPIENS</h1><p>Bienvenue</p></div>
+    <div class="table" id="table-Colossiens"><h1>Table COLOSSIENS</h1><p>Bienvenue</p></div>
+    <div class="table" id="table-1Thessaloniciens"><h1>Table 1 THESSALONICIENS</h1><p>Bienvenue</p></div>
+    <div class="table" id="table-2Thessaloniciens"><h1>Table 2 THESSALONICIENS</h1><p>Bienvenue</p></div>
+    <div class="table" id="table-1Timothee"><h1>Table 1 TIMOTHEE</h1><p>Bienvenue</p></div>
+    <div class="table" id="table-2Timothee"><h1>Table 2 TIMOTHEE</h1><p>Bienvenue</p></div>
+    <div class="table" id="table-Tite"><h1>Table TITE</h1><p>Bienvenue</p></div>
+    <div class="table" id="table-Philémon"><h1>Table PHILEMON</h1><p>Bienvenue</p></div>
+    <div class="table" id="table-Hebreux"><h1>Table HEBREUX</h1><p>Bienvenue</p></div>
+    <div class="table" id="table-Jacques"><h1>Table JACQUES</h1><p>Bienvenue</p></div>
+    <div class="table" id="table-1Pierre"><h1>Table 1 PIERRE</h1><p>Bienvenue</p></div>
+    <div class="table" id="table-2Pierre"><h1>Table 2 PIERRE</h1><p>Bienvenue</p></div>
+    <div class="table" id="table-1Jean"><h1>Table 1 JEAN</h1><p>Bienvenue</p></div>
+    <div class="table" id="table-2Jean"><h1>Table 2 JEAN</h1><p>Bienvenue</p></div>
+    <div class="table" id="table-3Jean"><h1>Table 3 JEAN</h1><p>Bienvenue</p></div>
+    <div class="table" id="table-Jude"><h1>Table JUDE</h1><p>Bienvenue</p></div>
+    <div class="table" id="table-Apocalypse"><h1>Table APOCALYPSE</h1><p>Bienvenue</p></div>
+
+    <script>
+        // Récupérer l'ID de la table depuis l'URL
+        const hash = window.location.hash.substring(1); // enlève le #
+        if (hash) {
+            const table = document.getElementById(hash);
+            if (table) {
+                table.style.display = 'block'; // affiche uniquement cette table
+            } else {
+                document.body.innerHTML = "<p style='text-align:center;margin-top:50px;'>Table introuvable</p>";
+            }
+        } else {
+            document.body.innerHTML = "<p style='text-align:center;margin-top:50px;'>Lien invalide. Veuillez contacter les mariés.</p>";
+        }
+    </script>
+
+</body>
+</html>
