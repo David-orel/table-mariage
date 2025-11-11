@@ -11,34 +11,43 @@
     padding: 0;
     height: 100%;
     font-family: 'Playfair Display', serif;
-    background: linear-gradient(135deg, #fffef5, #fff3cd);
+    background: linear-gradient(135deg, #fffef7, #fff3cd);
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
   }
 
   .table {
     position: relative;
-    width: 90%;
-    max-width: 400px;
+    width: 95%;
+    max-width: 500px;
     background: white;
-    padding: 60px 30px;
+    padding: 80px 40px;
     text-align: center;
-    border: 2px solid #d4af37;
-    border-radius: 20px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    border: 3px solid #d4af37;
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     overflow: hidden;
     display: none;
+    transform: scale(0.9);
+    opacity: 0;
+    animation: appear 1s ease forwards;
   }
 
-  /* Animation du cadre doré */
+  @keyframes appear {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  /* Cadre doré animé */
   .table::before {
     content: '';
     position: absolute;
     top: -2px; left: -2px; right: -2px; bottom: -2px;
-    border-radius: 20px;
-    background: linear-gradient(120deg, rgba(212,175,55,0.2), rgba(212,175,55,0.8), rgba(212,175,55,0.2));
-    animation: shine 3s infinite linear;
+    border-radius: 25px;
+    background: linear-gradient(120deg, rgba(212,175,55,0.3), rgba(212,175,55,0.8), rgba(212,175,55,0.3));
+    animation: shine 4s infinite linear;
     pointer-events: none;
   }
 
@@ -53,51 +62,54 @@
   }
 
   .table .table-text h2 {
-    font-size: 2em; /* Agrandi */
+    font-size: 2.6em;
     margin: 0;
     color: #8b6b2b;
-    font-family: 'Great Vibes', cursive; /* Police raffinée */
+    font-family: 'Great Vibes', cursive;
+    animation: fadeInUp 1.2s ease forwards;
   }
 
   .table .table-text h1 {
-    font-size: 3.2em;
+    font-size: 4em;
     margin: 10px 0 0 0;
     color: #d4af37;
     letter-spacing: 2px;
+    animation: fadeInUp 1.5s ease forwards;
   }
 
   .table .table-text p {
-    font-size: 0.3em;
+    font-size: 0.8em;
     color: #8b4513;
-    margin-top: 10px;
+    margin-top: 15px;
+    animation: fadeInUp 1.8s ease forwards;
   }
 
-  /* Animations d’apparition du texte */
-  .table .table-text h2, .table .table-text h1, .table .table-text p {
-    opacity: 0;
-    animation: fadeIn 1s ease forwards;
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
   }
 
-  .table .table-text h1 { animation-delay: 0.3s; }
-  .table .table-text p { animation-delay: 0.6s; }
-
-  @keyframes fadeIn {
-    0% { opacity: 0; transform: scale(0.9); }
-    100% { opacity: 1; transform: scale(1); }
-  }
-
-  /* Version mobile */
-  @media (max-width: 500px) {
-    .table { padding: 40px 20px; }
-    .table .table-text h2 { font-size: 1.6em; }
-    .table .table-text h1 { font-size: 2.5em; }
-    .table .table-text p { font-size: 0.25em; }
+  /* Responsive mobile */
+  @media (max-width: 600px) {
+    .table {
+      max-width: 90%;
+      padding: 60px 25px;
+    }
+    .table .table-text h2 {
+      font-size: 2em;
+    }
+    .table .table-text h1 {
+      font-size: 3em;
+    }
+    .table .table-text p {
+      font-size: 0.6em;
+    }
   }
 </style>
 </head>
 <body>
 
-<!-- Les 30 tables -->
+<!-- LES 30 TABLES -->
 <div class="table" id="table-Matthieu"><div class="table-text"><h2>Table</h2><h1>MATTHIEU</h1><p>Bienvenue</p></div></div>
 <div class="table" id="table-Marc"><div class="table-text"><h2>Table</h2><h1>MARC</h1><p>Bienvenue</p></div></div>
 <div class="table" id="table-Luc"><div class="table-text"><h2>Table</h2><h1>LUC</h1><p>Bienvenue</p></div></div>
@@ -126,16 +138,16 @@
 <div class="table" id="table-Jude"><div class="table-text"><h2>Table</h2><h1>JUDE</h1><p>Bienvenue</p></div></div>
 <div class="table" id="table-Apocalypse"><div class="table-text"><h2>Table</h2><h1>APOCALYPSE</h1><p>Bienvenue</p></div></div>
 
-<!-- Les 3 tables de l'Ancien Testament -->
+<!-- Les 3 tables de l’Ancien Testament -->
 <div class="table" id="table-Genese"><div class="table-text"><h2>Table</h2><h1>GENÈSE</h1><p>Bienvenue</p></div></div>
 <div class="table" id="table-Exode"><div class="table-text"><h2>Table</h2><h1>EXODE</h1><p>Bienvenue</p></div></div>
 <div class="table" id="table-Psaumes"><div class="table-text"><h2>Table</h2><h1>PSAUMES</h1><p>Bienvenue</p></div></div>
 
 <script>
   const hash = window.location.hash.substring(1);
-  if(hash){
+  if (hash) {
     const table = document.getElementById(hash);
-    if(table){
+    if (table) {
       table.style.display = 'flex';
       table.style.flexDirection = 'column';
       table.style.alignItems = 'center';
